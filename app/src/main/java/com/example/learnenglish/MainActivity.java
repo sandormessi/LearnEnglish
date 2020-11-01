@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity
         final TextView wordCountTextView = (TextView) findViewById(R.id.wordCount);
         final TextView tipCount = (TextView) findViewById(R.id.tipCount);
         final TextView answerTextView = (TextView)findViewById(R.id.answer);
+        final TextView scoreCountTextView = (TextView)findViewById(R.id.scoreCount);
 
         final Button repeatWordButton = (Button) findViewById(R.id.repeatWordButton);
         repeatWordButton.setOnClickListener(v ->
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity
             }
             else
             {
-                tts.speak(state.getActualWord(), TextToSpeech.QUEUE_FLUSH,null, "Whatever");
+                ReadWord();
             }
         });
 
@@ -74,22 +75,23 @@ public class MainActivity extends AppCompatActivity
             {
                 tipText.setEnabled(false);
 
-                // You figured it out
-                CharSequence text = "You figured it out.";
+                CharSequence text = getString(R.string.figureOut);
                 int duration = Toast.LENGTH_SHORT;
 
                 okButton.setEnabled(false);
+
+                state.setScoreCount(state.getScoreCount() + 1);
+                scoreCountTextView.setText(String.valueOf(state.getScoreCount()));
 
                 Toast toast = Toast.makeText(MainActivity.this, text, duration);
                 toast.show();
             }
             else
             {
-                // You did not figured it out
                 state.setTipCount(state.getTipCount() + 1);
                 tipCount.setText(String.valueOf(state.getTipCount()));
 
-                CharSequence text = "You did not figured it out.";
+                CharSequence text = getString(R.string.notFigureOut);
                 int duration = Toast.LENGTH_SHORT;
 
                 Toast toast = Toast.makeText(MainActivity.this, text, duration);
@@ -120,7 +122,8 @@ public class MainActivity extends AppCompatActivity
             repeatWordButton.setEnabled(true);
 
             answerTextView.setEnabled(true);
-            answerTextView.setText("");
+
+            tipText.setText("");
 
             answerButton.setEnabled(true);
             okButton.setEnabled(true);
@@ -128,7 +131,14 @@ public class MainActivity extends AppCompatActivity
 
             nextWordButton.setText(R.string.NextWord);
             wordCountTextView.setText(String.valueOf( state.getWordCount()));
+
+            ReadWord();
         });
+    }
+
+    private void ReadWord()
+    {
+        tts.speak(state.getActualWord(), TextToSpeech.QUEUE_FLUSH,null, "Read out loudr");
     }
 
     private void InitializeDictionary() throws IOException

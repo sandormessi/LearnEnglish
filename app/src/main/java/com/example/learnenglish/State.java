@@ -1,10 +1,11 @@
 package com.example.learnenglish;
 
-public class State
+class State
 {
     private int wordCount;
     private int tipCount;
     private String actualWord;
+    private int scoreCount;
 
     public int getTipCount() {
         return tipCount;
@@ -28,5 +29,13 @@ public class State
 
     public void setWordCount(int wordCount) {
         this.wordCount = wordCount;
+    }
+
+    public int getScoreCount() {
+        return scoreCount;
+    }
+
+    public void setScoreCount(int scoreCount) {
+        this.scoreCount = scoreCount;
     }
 }
