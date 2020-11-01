@@ -124,6 +124,7 @@ public class MainActivity extends AppCompatActivity
             answerTextView.setEnabled(true);
 
             tipText.setText("");
+            answerTextView.setText("");
 
             answerButton.setEnabled(true);
             okButton.setEnabled(true);
