@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">LearnEnglish</string>
+    <string name="Word">Szavak száma:</string>
+    <string name="Tips">Tippek</string>
+    <string name="OK">Tippelés</string>
+    <string name="Answer">Megoldás</string>
+    <string name="RepeatWord">Meghallgat</string>
+    <string name="NextWord">Következő szó</string>
+    <string name="start">Start</string>
+</resources>
